@@ -1,0 +1,20 @@
+<launch>
+  <arg name="robot_pose_topic1" default="/mur620c/mir_pose_simple"/>
+  <arg name="robot_pose_topic2" default="/mur620d/mir_pose_simple"/>
+  
+
+  <group ns="robot_1">
+    <node name="actual_pose_publisher" pkg="my_virtual_leader" type="actual_pose_publisher.py" output="screen">
+      <rosparam param="robot_pose_topic" subst_value="True">$(arg robot_pose_topic1) </rosparam>
+    </node>
+  </group>
+
+
+  <group ns="robot_2">
+    <node name="actual_pose_publisher" pkg="my_virtual_leader" type="actual_pose_publisher.py" output="screen">
+      <rosparam param="robot_pose_topic" subst_value="True">$(arg robot_pose_topic2) </rosparam>
+    </node>
+  </group>
+
+
+</launch>
