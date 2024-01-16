@@ -9,7 +9,7 @@ from geometry_msgs.msg import PoseWithCovarianceStamped, Twist
 from geometry_msgs.msg import PoseStamped, Pose,Point,Quaternion,WrenchStamped,Wrench
 from nav_msgs.msg import Odometry
 from std_srvs.srv import Trigger
-
+import scipy
 
 
 
@@ -33,7 +33,7 @@ class follower:
         self.wrench_Ty = None
         self.wrench_Tz = None
 
-        self.alpha = 0.6 #smoothing factor
+        self.alpha = 0.90 #smoothing factor
 
 
 
