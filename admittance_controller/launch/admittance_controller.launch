@@ -1,0 +1,12 @@
+<launch>
+  <arg name="robot_name" default="/mur620b/UR10_r"/>
+  <arg name="robot_wrench_topic" default="$(arg robot_name)/wrench"/>
+  
+<node pkg="rosservice" type="rosservice" name="zero_ftsensor" args="call $(arg robot_name)/ur_hardware_interface/zero_ftsensor"/>
+<node name="wrench_subscriber" pkg="admittance_controller" type="admittance_controller.py" output="screen">
+    <rosparam param="robot_wrench_topic" subst_value="True">$(arg robot_wrench_topic) </rosparam>
+    <rosparam param="robot_name" subst_value="True">$(arg robot_name) </rosparam>
+</node>
+
+
+</launch>
